@@ -2,7 +2,6 @@ package com.myphung.calculator;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,21 +13,32 @@ public class MainActivity extends AppCompatActivity {
 
     //string of numbers and operators
     //EX. [1231], [+], [521]
-    public static ArrayList<String> sequence = new ArrayList<>();
+    private static ArrayList<String> sequence = new ArrayList<>();
 
-    //current number to be added to the sequence
-    public static String currentNumber = "";
-
-    private void clearSequence() {
+    public static void clearSequence() {
         sequence.clear();
     }
 
-    private void addSequence(String str) {
+    public static void addSequence(String str) {
         sequence.add(str);
     }
 
-    public String getCurrentNumber() {
+    //current number to be added to the sequence
+    private static String currentNumber = "";
+
+    /**
+     * Returns the current number
+     * @return currentNumber
+     */
+    public static String getCurrentNumber() {
         return currentNumber;
+    }
+
+    /**
+     * Clears the current number cache
+     */
+    public static void clearCurrentNumber() {
+        currentNumber = "";
     }
 
     /**
@@ -36,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      * if "num" is an integer
      * @param num digit to add
      */
-    public void addCurrentNumber(String num) {
+    public static void addCurrentNumber(String num) {
         try {
             Integer.parseInt(num);
         } catch (Exception x) {
@@ -49,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
      * Adds digit "num" to the end of the current number
      * @param num digit to add
      */
-    public void addCurrentNumber(Integer num) {
+    public static void addCurrentNumber(Integer num) {
         currentNumber += num;
     }
 
@@ -102,11 +112,12 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        NumberButtons numberButtons = new NumberButtons();
 
-        for (Integer id: NumberButtons.numberIDs) {
+        for (Integer id: NumberButton.numberIDs) {
             Button button = findViewById(id);
-            button.setOnClickListener(numberButtons.getClickAction(id));
+            NumberButton numberButton = new NumberButton(button, result);
+
+            button.setOnClickListener(numberButton.getClickAction());
         }
 
 
@@ -142,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Displays the result of the sequences in the results view
      */
-    public void displayResult(TextView view) {
+    public static void displayResult(TextView view) {
 
         //result
         int resultingNumber = 0;

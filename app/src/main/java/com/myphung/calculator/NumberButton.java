@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class NumberButtons extends MainActivity {
+public class NumberButton {
 
     //list of all number buttons
     static ArrayList<Integer> numberIDs = new ArrayList<Integer>() {
@@ -24,15 +24,30 @@ public class NumberButtons extends MainActivity {
         }
     };
 
-    public Button getButton(Integer index) {
-        return findViewById(numberIDs.get(index));
+    private final Button button;
+    private final TextView result;
+
+    NumberButton(Button button, TextView result) {
+        this.button = button;
+        this.result = result;
     }
 
-    public View.OnClickListener getClickAction(Integer id) {
+    public Button getButton() {
+        return button;
+    }
+
+    public TextView getResult() {
+        return result;
+    }
+
+    /**
+     * States the function of the button's on-click action
+     * @return View.onClickListener instance
+     */
+    public View.OnClickListener getClickAction() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Button button = findViewById(id);
                 int number;
 
                 try {
@@ -41,13 +56,11 @@ public class NumberButtons extends MainActivity {
                     throw new Error(x.fillInStackTrace());
                 }
 
-                TextView result = findViewById(R.id.result);
-
                 //add number to end of current number
-                addCurrentNumber(number);
+                MainActivity.addCurrentNumber(number);
 
                 //display number in result
-                displayResult(result);
+                MainActivity.displayResult(result);
             }
         };
     }
