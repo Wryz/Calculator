@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class NumberButton {
 
-    //list of all number buttons
+    /**
+     * IDs of all number buttons
+     */
     static ArrayList<Integer> numberIDs = new ArrayList<Integer>() {
         {
             add(R.id.button0);
@@ -32,10 +34,16 @@ public class NumberButton {
         this.result = result;
     }
 
+    /**
+     * @return Saved Button instance
+     */
     public Button getButton() {
         return button;
     }
 
+    /**
+     * @return Saved TextView instance
+     */
     public TextView getResult() {
         return result;
     }

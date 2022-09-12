@@ -15,10 +15,17 @@ public class MainActivity extends AppCompatActivity {
     //EX. [1231], [+], [521]
     private static ArrayList<String> sequence = new ArrayList<>();
 
+    /**
+     * Clears the current sequence cache
+     */
     public static void clearSequence() {
         sequence.clear();
     }
 
+    /**
+     * Adds an element to the current sequence cache
+     * @param str Sequence element to be added
+     */
     public static void addSequence(String str) {
         sequence.add(str);
     }
@@ -112,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-
+        //registers the listener for all number buttons
         for (Integer id: NumberButton.numberIDs) {
+
             Button button = findViewById(id);
             NumberButton numberButton = new NumberButton(button, result);
 
@@ -121,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //TODO Create a separate class for operators
         /*
         for (int i : operatorIDs) {
             Button button = findViewById(i);
