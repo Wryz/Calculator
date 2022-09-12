@@ -6,30 +6,25 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class NumberButton extends ResultsDisplay {
+public class OperatorButton extends ResultsDisplay {
 
     /**
-     * IDs of all number buttons
+     * IDs of all operator buttons
      */
-    static ArrayList<Integer> numberIDs = new ArrayList<Integer>() {
+    static ArrayList<Integer> operatorIDs = new ArrayList<Integer>() {
         {
-            add(R.id.button0);
-            add(R.id.button1);
-            add(R.id.button2);
-            add(R.id.button3);
-            add(R.id.button4);
-            add(R.id.button5);
-            add(R.id.button6);
-            add(R.id.button7);
-            add(R.id.button8);
-            add(R.id.button9);
+            add(R.id.buttonAdd);
+            add(R.id.buttonSub);
+            add(R.id.buttonMulti);
+            add(R.id.buttonDiv);
+            add(R.id.buttonMod);
         }
     };
 
     private final Button button;
     private final TextView result;
 
-    NumberButton(Button button, TextView result) {
+    OperatorButton(Button button, TextView result) {
         this.button = button;
         this.result = result;
     }
@@ -56,18 +51,11 @@ public class NumberButton extends ResultsDisplay {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int number;
+                MainActivity.addSequence(MainActivity.getCurrentNumber());
+                MainActivity.addSequence(button.getText().toString());
+                MainActivity.clearCurrentNumber();
 
-                try {
-                    number = Integer.parseInt(button.getText().toString());
-                } catch (Exception x) {
-                    throw new Error(x.fillInStackTrace());
-                }
-
-                //add number to end of current number
-                MainActivity.addCurrentNumber(number);
-
-                //display number in result
+                //displays operator
                 displayResult();
             }
         };
@@ -80,7 +68,7 @@ public class NumberButton extends ResultsDisplay {
     @Override
     public void displayResult() {
         super.displayResult();
-        String number = MainActivity.getCurrentNumber();
-        this.getResult().setText(number);
+        //TODO if there is already an operator in the sequence then get the displayed result
+        //TODO add a clicked-button style that changes the color of the background
     }
 }
