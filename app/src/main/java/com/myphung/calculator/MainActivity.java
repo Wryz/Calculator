@@ -19,6 +19,64 @@ public class MainActivity extends AppCompatActivity {
     //current number to be added to the sequence
     public static String currentNumber = "";
 
+    private void clearSequence() {
+        sequence.clear();
+    }
+
+    private void addSequence(String str) {
+        sequence.add(str);
+    }
+
+    public String getCurrentNumber() {
+        return currentNumber;
+    }
+
+    /**
+     * Adds the digit "num" to the end of the current number
+     * if "num" is an integer
+     * @param num digit to add
+     */
+    public void addCurrentNumber(String num) {
+        try {
+            Integer.parseInt(num);
+        } catch (Exception x) {
+            throw new Error(x.fillInStackTrace());
+        }
+        currentNumber += num;
+    }
+
+    /**
+     * Adds digit "num" to the end of the current number
+     * @param num digit to add
+     */
+    public void addCurrentNumber(Integer num) {
+        currentNumber += num;
+    }
+
+    private double getResult(double numOne, String operator, double numTwo) {
+        double result = 0;
+        switch (operator) {
+            case "*":
+                result = numOne * numTwo;
+                break;
+            case "/":
+                result = numOne / numTwo;
+                break;
+            case "+":
+                result = numOne + numTwo;
+                break;
+            case "-":
+                result = numOne - numTwo;
+                break;
+            case "%":
+                result = numOne % numTwo;
+                break;
+        }
+        return result;
+    }
+
+    //use recursion to loop through sequence
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +89,6 @@ public class MainActivity extends AppCompatActivity {
         TextView result = findViewById(R.id.result);
         Button ac = findViewById(R.id.buttonAC);
 
-        final ArrayList<Integer> numberIDs = new ArrayList<Integer>() {
-            {
-                add(R.id.button1);
-                add(R.id.button2);
-                add(R.id.button3);
-                add(R.id.button4);
-                add(R.id.button5);
-                add(R.id.button6);
-                add(R.id.button7);
-                add(R.id.button8);
-                add(R.id.button9);
-                add(R.id.button0);
-            }
-        };
         final ArrayList<Integer> operatorIDs = new ArrayList<Integer>() {
             {
                 add(R.id.buttonNegPos);
@@ -58,33 +102,15 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        //registers listener for all numbers
-        for (int i : numberIDs) {
-            Button button = findViewById(i);
-            int number;
+        NumberButtons numberButtons = new NumberButtons();
 
-            try {
-                number = Integer.parseInt(button.getText().toString());
-            } catch (Exception x) {
-                throw new Error(x.fillInStackTrace());
-            }
-
-            //when button is clicked add the number to the sequence
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //add number to end of current number
-                    currentNumber += number;
-
-                    sequence.add(currentNumber);
-
-                    //display number in result
-                    displayResult(result);
-                }
-            });
+        for (Integer id: NumberButtons.numberIDs) {
+            Button button = findViewById(id);
+            button.setOnClickListener(numberButtons.getClickAction(id));
         }
 
 
+        /*
         for (int i : operatorIDs) {
             Button button = findViewById(i);
 
@@ -92,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    sequence.add(currentNumber);
                     sequence.add(button.getText().toString());
                     currentNumber = "";
 
@@ -107,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 result.setText(String.valueOf(0));
             }
         });
+         */
 
 
     }
