@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity.clearSequence();
+                MainActivity.clearCurrentNumber();
                 result.setText(String.valueOf(0));
             }
         });

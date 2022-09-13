@@ -147,6 +147,8 @@ public class ResultsDisplay {
             case "%":
                 result = numOne % numTwo;
                 break;
+            case "=":
+                result = Float.parseFloat(getSequenceResult(MainActivity.getSequence()));
         }
         return result;
     }

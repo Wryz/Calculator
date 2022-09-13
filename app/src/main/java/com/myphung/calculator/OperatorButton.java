@@ -18,6 +18,7 @@ public class OperatorButton extends ResultsDisplay {
             add(R.id.buttonMulti);
             add(R.id.buttonDiv);
             add(R.id.buttonMod);
+            add(R.id.buttonEqual);
         }
     };
 
