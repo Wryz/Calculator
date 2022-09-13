@@ -68,7 +68,7 @@ public class NumberButton extends ResultsDisplay {
                 MainActivity.addCurrentNumber(number);
 
                 //display number in result
-                displayResult();
+                displayResult(getResult());
             }
         };
     }
@@ -78,8 +78,8 @@ public class NumberButton extends ResultsDisplay {
      * when the user clicks the button
      */
     @Override
-    public void displayResult() {
-        super.displayResult();
+    public void displayResult(TextView view) {
+        super.displayResult(view);
         String number = MainActivity.getCurrentNumber();
         this.getResult().setText(number);
     }

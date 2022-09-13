@@ -56,19 +56,17 @@ public class OperatorButton extends ResultsDisplay {
                 MainActivity.clearCurrentNumber();
 
                 //displays operator
-                displayResult();
+                displayResult(getResult());
             }
         };
     }
 
     /**
-     * Displays the number in the TextView
-     * when the user clicks the button
+     * Changes the color of the operator button
      */
     @Override
-    public void displayResult() {
-        super.displayResult();
-        //TODO if there is already an operator in the sequence then get the displayed result
+    public void displayResult(TextView view) {
+        super.displayResult(view);
         //TODO add a clicked-button style that changes the color of the background
     }
 }
