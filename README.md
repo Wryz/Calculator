@@ -1,7 +1,6 @@
 # Calculator
-
-## Preview (9/14/22)
-(https://imgur.com/a/NE4ES6b)
+### Preview (9/14/22)
+![](https://github.com/Wryz/Calculator/blob/main/images/bLURjje%20-%20Imgur_Trim.gif)
 
 <html>
   <body>
