@@ -1,5 +1,6 @@
 package com.myphung.calculator;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -7,8 +8,7 @@ import java.util.ArrayList;
 public class ResultsDisplay {
 
     /**
-     * Called before the action of every button
-     * Uhhh... I have no idea why this is necessary
+     * Set the proper text display for some cases
      */
     public void displayResult(TextView view) {
         view.setText(getSequenceResult(MainActivity.getSequence()));
@@ -20,6 +20,7 @@ public class ResultsDisplay {
      * @return the product of all the arithmetic
      */
     private String getSequenceResult(ArrayList<String> sequence) {
+        Log.i("size", String.valueOf(sequence.size()));
         if (sequence.size() > 2) {
             float firstNumber;
             String operator;
@@ -31,6 +32,13 @@ public class ResultsDisplay {
                 secondNumber = Float.parseFloat(sequence.get(2));
                 result = getResult(firstNumber, operator, secondNumber);
 
+                Log.i("firstNumber", String.valueOf(firstNumber));
+                Log.i("operator", String.valueOf(operator));
+                Log.i("secondNumber", String.valueOf(secondNumber));
+                Log.i("result", String.valueOf(result));
+
+                //TODO Remove decimal IF possible (3x3 = 9 NOT 9.0)
+
                 sequence.set(2, String.valueOf(result)); //sets index 2 to result
                 sequence.remove(0);
                 sequence.remove(0);
@@ -40,8 +48,11 @@ public class ResultsDisplay {
             }
 
         } else if (!sequence.isEmpty()) {
+            Log.i("sequence.get(0)", String.valueOf(sequence.get(0)));
             return sequence.get(0);
         } else {
+            Log.i("getCurrentNumber()", String.valueOf(MainActivity.getCurrentNumber()));
+
             return MainActivity.getCurrentNumber();
         }
 
