@@ -9,4 +9,8 @@
       <li>Java code interaction with user-inputs</li>
     </ul>
   </article>
+  <p>Preview (9/13/22)</p>
+  <br/>
+  <iframe width="560" height="315" src="https://imgur.com/a/NE4ES6b" frameborder="0" allowfullscreen></iframe>
+  </iframe>
 </body>
