@@ -56,16 +56,9 @@ public class NumberButton extends ResultsDisplay {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int number;
 
-                try {
-                    number = Integer.parseInt(button.getText().toString());
-                } catch (Exception x) {
-                    throw new Error(x.fillInStackTrace());
-                }
-
-                //add number to end of current number
-                MainActivity.addCurrentNumber(number);
+                //add number to end of string
+                MainActivity.addSequence(button.getText().toString());
 
                 //display number in result
                 displayResult(getResult());
@@ -80,7 +73,5 @@ public class NumberButton extends ResultsDisplay {
     @Override
     public void displayResult(TextView view) {
         super.displayResult(view);
-        String number = MainActivity.getCurrentNumber();
-        this.getResult().setText(number);
     }
 }

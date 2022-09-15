@@ -52,13 +52,9 @@ public class OperatorButton extends ResultsDisplay {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO if previous element in sequence is an operator then set the previous operator to new operator and ignore this block
 
-                //
-                MainActivity.addSequence(MainActivity.getCurrentNumber());
+                //add operator to end of string
                 MainActivity.addSequence(button.getText().toString());
-                MainActivity.clearCurrentNumber();
-                //
 
                 //displays operator
                 displayResult(getResult());

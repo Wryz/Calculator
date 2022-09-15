@@ -11,49 +11,71 @@ public class ResultsDisplay {
      * Set the proper text display for some cases
      */
     public void displayResult(TextView view) {
+
         view.setText(getSequenceResult(MainActivity.getSequence()));
     }
 
-    /**
-     * Recursive method to get the result of the sequence
-     * @param sequence array list of strings containing numbers or operators
-     * @return the product of all the arithmetic
-     */
-    private String getSequenceResult(ArrayList<String> sequence) {
-        Log.i("size", String.valueOf(sequence.size()));
-        if (sequence.size() > 2) {
-            float firstNumber;
-            String operator;
-            float secondNumber;
-            float result;
-            try {
-                firstNumber = Float.parseFloat(sequence.get(0));
-                operator = sequence.get(1);
-                secondNumber = Float.parseFloat(sequence.get(2));
-                result = getResult(firstNumber, operator, secondNumber);
 
-                Log.i("firstNumber", String.valueOf(firstNumber));
-                Log.i("operator", String.valueOf(operator));
-                Log.i("secondNumber", String.valueOf(secondNumber));
-                Log.i("result", String.valueOf(result));
+    private String getSequenceResult(String sequence) {
+        //gets at max three parts from the sequence
+        //first part is first number before the operator
+        //second part is the operator
+        //third part is the number after the operator and before the second operator
 
-                //TODO Remove decimal IF possible (3x3 = 9 NOT 9.0)
+        ArrayList<Integer> operatorIndexes = new ArrayList<>();
+        String firstNumber = sequence;
+        String operator = "";
+        String secondNumber = "";
 
-                sequence.set(2, String.valueOf(result)); //sets index 2 to result
-                sequence.remove(0);
-                sequence.remove(0);
-                return getSequenceResult(sequence);
-            } catch (Exception x) {
-                throw new Error(x.fillInStackTrace());
+        Log.i("sequence", sequence);
+
+        //adds the location of all operators to use as reference points to find the numbers
+        for (Character c : sequence.toCharArray()) {
+            if (isOperator(String.valueOf(c))) {
+                operatorIndexes.add((sequence.indexOf(c)));
+            }
+        }
+
+        try {
+            firstNumber = sequence.substring(0, operatorIndexes.get(0));
+            operator = String.valueOf(sequence.charAt(operatorIndexes.get(0)));
+            secondNumber = sequence.substring(operatorIndexes.get(0)+1, sequence.length());
+
+        } catch (Exception x) {
+
+        }
+        Log.i("firstNumber", firstNumber);
+        Log.i("operator", operator);
+        Log.i("secondNumber", secondNumber);
+
+
+        Log.i("operatorAmt", String.valueOf(operatorIndexes.size()));
+
+
+        //CHECKS
+        if (operatorIndexes.size() == 0) {
+            //returns the current number being inputted
+            return sequence;
+        } else if (operatorIndexes.size() == 1) {
+
+            if (secondNumber.length() == 0) {
+                return sequence;
+            } else {
+                return secondNumber;
             }
 
-        } else if (!sequence.isEmpty()) {
-            Log.i("sequence.get(0)", String.valueOf(sequence.get(0)));
-            return sequence.get(0);
-        } else {
-            Log.i("getCurrentNumber()", String.valueOf(MainActivity.getCurrentNumber()));
-
-            return MainActivity.getCurrentNumber();
+        }
+        try {
+            return getResult(
+                    Float.parseFloat(
+                            sequence.substring(0, operatorIndexes.get(0))
+                    ),
+                    String.valueOf(sequence.charAt(operatorIndexes.get(0))),
+                    Float.parseFloat(
+                            sequence.substring(operatorIndexes.get(0),operatorIndexes.get(1))
+                    ));
+        } catch (Exception x) {
+            return "hi";
         }
 
     }
@@ -65,7 +87,7 @@ public class ResultsDisplay {
      * @param numTwo second number
      * @return the result of the arithmetic
      */
-    private float getResult(float numOne, String operator, float numTwo) {
+    private String getResult(float numOne, String operator, float numTwo) {
         float result = 0;
         switch (operator) {
             case "*":
@@ -86,6 +108,26 @@ public class ResultsDisplay {
             case "=":
                 result = Float.parseFloat(getSequenceResult(MainActivity.getSequence()));
         }
-        return result;
+        try {
+            return String.valueOf(Integer.parseInt(String.valueOf(result)));
+        } catch (Exception x) {
+            return String.valueOf(result);
+        }
+    }
+
+    public boolean isOperator(String operator) {
+
+        ArrayList<String> operators = new ArrayList<String>() {
+            {
+                add("*");
+                add("/");
+                add("+");
+                add("-");
+                add("%");
+                add("=");
+            }
+        };
+
+        return operators.contains(operator);
     }
 }

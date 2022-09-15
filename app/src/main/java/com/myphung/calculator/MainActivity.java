@@ -7,19 +7,30 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
+    //TODO May need to redo sequence system by putting everything into one STRING
+    //A string can only include ONE operator, if it includes any more then the
+    //result of the two numbers in between the operator will be calculated
+    //and then used to build onto the next string
+    //CHECK FOR MULTIPLE OPERATORS IN THE ON-CLICK OPERATOR ACTION
+
     //string of numbers and operators
-    //EX. [1231], [+], [521]
-    private static ArrayList<String> sequence = new ArrayList<>();
+    //EX. "12+321"
+    private static String sequence = "";
 
     /**
      * Clears the current sequence cache
      */
     public static void clearSequence() {
-        sequence.clear();
+        sequence = "";
+    }
+
+    /**
+     * Clears the current sequence cache
+     */
+    public static void setSequence(String newSequence) {
+        sequence = newSequence;
     }
 
     /**
@@ -27,58 +38,16 @@ public class MainActivity extends AppCompatActivity {
      * @param str Sequence element to be added
      */
     public static void addSequence(String str) {
-        sequence.add(str);
+        sequence += str;
     }
 
     /**
      * Adds an element to the current sequence cache
      * @return the cached sequence
      */
-    public static ArrayList<String> getSequence() {
+    public static String getSequence() {
         return sequence;
     }
-
-    //current number to be added to the sequence
-    private static String currentNumber = "";
-
-    /**
-     * Returns the current number
-     * @return currentNumber
-     */
-    public static String getCurrentNumber() {
-        return currentNumber;
-    }
-
-    /**
-     * Clears the current number cache
-     */
-    public static void clearCurrentNumber() {
-        currentNumber = "";
-    }
-
-    /**
-     * Adds the digit "num" to the end of the current number
-     * if "num" is an integer
-     * @param num digit to add
-     */
-    public static void addCurrentNumber(String num) {
-        try {
-            Integer.parseInt(num);
-        } catch (Exception x) {
-            throw new Error(x.fillInStackTrace());
-        }
-        currentNumber += num;
-    }
-
-    /**
-     * Adds digit "num" to the end of the current number
-     * @param num digit to add
-     */
-    public static void addCurrentNumber(Integer num) {
-        currentNumber += num;
-    }
-
-    //use recursion to loop through sequence
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity.clearSequence();
-                MainActivity.clearCurrentNumber();
                 result.setText(String.valueOf(0));
             }
         });
