@@ -51,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static String getFormattedNumber(String number) {
         int num = Math.round(Float.parseFloat(number));
-        try {
-            return String.valueOf(num);
-        } catch (Exception x) {
-            return String.valueOf(Float.parseFloat(number));
+        float tempNum = Float.parseFloat(number);
 
+        if (tempNum / num == 1.0) {
+            return String.valueOf(num);
+        } else {
+            return String.valueOf(tempNum);
         }
     }
 
