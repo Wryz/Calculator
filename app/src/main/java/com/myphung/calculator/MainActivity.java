@@ -49,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
         return sequence;
     }
 
+    public static String getFormattedNumber(String number) {
+        int num = Math.round(Float.parseFloat(number));
+        try {
+            return String.valueOf(num);
+        } catch (Exception x) {
+            return String.valueOf(Float.parseFloat(number));
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

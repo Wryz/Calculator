@@ -21,26 +21,49 @@ public class ResultsDisplay {
         //first part is first number before the operator
         //second part is the operator
         //third part is the number after the operator and before the second operator
+        Log.i("border", "--------------------");
 
-        ArrayList<Integer> operatorIndexes = new ArrayList<>();
+        ArrayList<Integer> operatorIndexes = new ArrayList<>(0);
         String firstNumber = sequence;
         String operator = "";
         String secondNumber = "";
 
+        //adds the location of all operators to use as reference points to find the numbers
+
+        for (int index = 0; index < sequence.length(); index++) {
+
+            Character c = sequence.charAt(index);
+            Log.i("c", String.valueOf(c));
+            Log.i("index", String.valueOf(index));
+            if (isOperator(String.valueOf(c))) {
+
+                if (isOperator(String.valueOf(sequence.charAt(index-1)))) {
+
+                    //take the previous operator out
+                    sequence = sequence.replace(sequence.charAt(index-1), c);
+                    sequence = sequence.substring(0, sequence.length()-1);
+
+                } else {
+                    operatorIndexes.add((index));
+                }
+
+            }
+
+        }
+        MainActivity.setSequence(sequence);
         Log.i("sequence", sequence);
 
-        //adds the location of all operators to use as reference points to find the numbers
-        for (Character c : sequence.toCharArray()) {
-            if (isOperator(String.valueOf(c))) {
-                operatorIndexes.add((sequence.indexOf(c)));
-            }
-        }
-
         try {
+            Log.i("operators", operatorIndexes.toString());
+
             firstNumber = sequence.substring(0, operatorIndexes.get(0));
             operator = String.valueOf(sequence.charAt(operatorIndexes.get(0)));
-            secondNumber = sequence.substring(operatorIndexes.get(0)+1, sequence.length());
+            if (operatorIndexes.size()>1) {
+                secondNumber = sequence.substring(operatorIndexes.get(0)+1, sequence.length()-1);
 
+            } else {
+                secondNumber = sequence.substring(operatorIndexes.get(0)+1, sequence.length());
+            }
         } catch (Exception x) {
 
         }
@@ -52,32 +75,25 @@ public class ResultsDisplay {
         Log.i("operatorAmt", String.valueOf(operatorIndexes.size()));
 
 
-        //CHECKS
-        if (operatorIndexes.size() == 0) {
-            //returns the current number being inputted
-            return sequence;
-        } else if (operatorIndexes.size() == 1) {
-
-            if (secondNumber.length() == 0) {
-                return sequence;
-            } else {
-                return secondNumber;
-            }
-
-        }
+        //if there are two operators then there is a completed statement
         try {
-            return getResult(
-                    Float.parseFloat(
-                            sequence.substring(0, operatorIndexes.get(0))
-                    ),
-                    String.valueOf(sequence.charAt(operatorIndexes.get(0))),
-                    Float.parseFloat(
-                            sequence.substring(operatorIndexes.get(0),operatorIndexes.get(1))
-                    ));
-        } catch (Exception x) {
-            return "hi";
-        }
+            String result = getResult(
+                    Float.parseFloat(firstNumber),
+                    operator,
+                    Float.parseFloat(secondNumber));
+            result = MainActivity.getFormattedNumber(result);
 
+            String newSequence = result+ sequence.charAt(operatorIndexes.get(1));
+            if (sequence.contains("=")) newSequence = result;
+
+            Log.i("formattedNumber", result);
+            Log.i("operatorIndex2", String.valueOf(sequence.charAt(operatorIndexes.get(1))));
+
+            MainActivity.setSequence(newSequence);
+            sequence = newSequence;
+
+        } catch (Exception ignored) {}
+        return sequence;
     }
 
     /**
