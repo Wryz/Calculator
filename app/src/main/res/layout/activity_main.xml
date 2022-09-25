@@ -26,38 +26,40 @@
             android:layout_weight="1"
             android:divider="@android:drawable/arrow_down_float">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonAC"
-                style="buttonbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#2C2F33"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_operator"
                 android:text="@string/ACSymbol"
+                android:textColor="@color/white"
                 android:textSize="34sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonNegPos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#2C2F33"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_operator"
                 android:text="@string/PosNegSymbol"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonMod"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#2C2F33"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_operator"
                 android:text="@string/ModulusSymbol"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
         </TableRow>
@@ -69,37 +71,40 @@
             android:layout_weight="1"
             android:divider="@android:drawable/arrow_down_float">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num1"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num2"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num3"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
         </TableRow>
@@ -110,37 +115,40 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num4"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num5"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num6"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
         </TableRow>
@@ -151,37 +159,40 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num7"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num8"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num9"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
         </TableRow>
@@ -192,26 +203,28 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Num0"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonDot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="#7289DA"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_number"
                 android:text="@string/Period"
+                android:textColor="@color/white"
                 android:textSize="48sp" />
 
         </TableRow>
@@ -230,59 +243,61 @@
         app:layout_constraintTop_toTopOf="@id/numbers"
         app:layout_constraintVertical_bias="0.5">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonAdd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#2C2F33"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"            android:background="@drawable/button_operator"
             android:text="@string/PlusSymbol"
+            android:textColor="@color/white"
             android:textSize="48sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSub"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#2C2F33"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"            android:background="@drawable/button_operator"
             android:text="@string/MinusSymbol"
+            android:textColor="@color/white"
             android:textSize="48sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonDiv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#2C2F33"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"            android:background="@drawable/button_operator"
             android:text="@string/DivideSymbol"
+            android:textColor="@color/white"
             android:textSize="48sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonMulti"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#2C2F33"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_operator"
             android:text="@string/MultiplySymbol"
+            android:textColor="@color/white"
             android:textSize="48sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonEqual"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#2C2F33"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_operator"
             android:text="@string/EqualsSymbol"
+            android:textColor="@color/white"
             android:textSize="48sp" />
     </LinearLayout>
 
@@ -294,7 +309,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="60sp"
         app:drawableBottomCompat="@drawable/ic_launcher_foreground"

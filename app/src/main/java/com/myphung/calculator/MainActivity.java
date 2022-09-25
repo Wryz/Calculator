@@ -9,12 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO May need to redo sequence system by putting everything into one STRING
-    //A string can only include ONE operator, if it includes any more then the
-    //result of the two numbers in between the operator will be calculated
-    //and then used to build onto the next string
-    //CHECK FOR MULTIPLE OPERATORS IN THE ON-CLICK OPERATOR ACTION
-
     //string of numbers and operators
     //EX. "12+321"
     private static String sequence = "";
