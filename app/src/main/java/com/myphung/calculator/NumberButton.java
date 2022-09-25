@@ -13,6 +13,7 @@ public class NumberButton extends ResultsDisplay {
      */
     static ArrayList<Integer> numberIDs = new ArrayList<Integer>() {
         {
+            add(R.id.buttonDot);
             add(R.id.button0);
             add(R.id.button1);
             add(R.id.button2);

@@ -81,7 +81,6 @@ public class ResultsDisplay {
                     Float.parseFloat(firstNumber),
                     operator,
                     Float.parseFloat(secondNumber));
-            result = MainActivity.getFormattedNumber(result);
 
             String newSequence = result+ sequence.charAt(operatorIndexes.get(1));
             if (sequence.contains("=")) newSequence = result;
@@ -124,11 +123,7 @@ public class ResultsDisplay {
             case "=":
                 result = Float.parseFloat(getSequenceResult(MainActivity.getSequence()));
         }
-        try {
-            return String.valueOf(Integer.parseInt(String.valueOf(result)));
-        } catch (Exception x) {
-            return String.valueOf(result);
-        }
+        return MainActivity.getFormattedNumber(String.valueOf(result));
     }
 
     public boolean isOperator(String operator) {
