@@ -11,10 +11,21 @@ public class ResultsDisplay {
      * Set the proper text display for some cases
      */
     public void displayResult(TextView view) {
-
-        view.setText(getSequenceResult(MainActivity.getSequence()));
+        String sequence = MainActivity.getSequence();
+        sequence = filter(sequence);
+        view.setText(getSequenceResult(sequence));
     }
 
+
+    //TODO fix crash for when adding integer to end of negative value
+    //TODO Create a filter method before checking the result of every input value
+    // ex. no duplicate decimals and equals when there is no need
+    // if displayed sequence does not have any operator and user presses an equal
+    // sign then just display the number
+
+    private String filter(String sequence) {
+        return sequence;
+    }
 
     private String getSequenceResult(String sequence) {
         //gets at max three parts from the sequence
