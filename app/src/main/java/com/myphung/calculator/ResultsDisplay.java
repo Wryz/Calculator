@@ -18,12 +18,17 @@ public class ResultsDisplay {
 
 
     //TODO fix crash for when adding integer to end of negative value
-    //TODO Create a filter method before checking the result of every input value
-    // ex. no duplicate decimals and equals when there is no need
-    // if displayed sequence does not have any operator and user presses an equal
-    // sign then just display the number
 
     private String filter(String sequence) {
+
+        Character lastCharacter = sequence.charAt(sequence.length()-1);
+
+        //check if last character is a period, and search for other periods in sequence
+
+        //remove equal sign if the sequence does not have an operator
+
+        //make check for negative sign being mistaken for subtraction sign
+
         return sequence;
     }
 
