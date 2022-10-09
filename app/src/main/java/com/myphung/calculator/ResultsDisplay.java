@@ -21,13 +21,52 @@ public class ResultsDisplay {
 
     private String filter(String sequence) {
 
-        Character lastCharacter = sequence.charAt(sequence.length()-1);
+        String lastCharacter = String.valueOf(sequence.charAt(sequence.length()-1));
 
         //check if last character is a period, and search for other periods in sequence
+        //if so remove the period
 
-        //remove equal sign if the sequence does not have an operator
+        StringBuilder editedSequence = new StringBuilder(sequence);
 
-        //make check for negative sign being mistaken for subtraction sign
+        int decimalCounter = 0;
+
+
+        if (lastCharacter.equals("=")) {
+            boolean removeEqualSign = true;
+            for (int index = 0; index < sequence.length(); index++) {
+                Character c = sequence.charAt(index);
+
+                //checks if there is another operator in the sequence (excludes = sign at end)
+                if (isOperator(String.valueOf(c)) && index != sequence.length()-1) {
+                    removeEqualSign = false;
+                    break;
+                }
+            }
+            if (removeEqualSign) {
+                editedSequence.deleteCharAt(editedSequence.length()-1);
+            }
+        }
+
+        for (int index = 0; index < sequence.length(); index++) {
+
+            String c = String.valueOf(sequence.charAt(index));
+
+            /*
+            finding excess decimal points
+            skips the first decimal point
+            */
+            if(c.equals(".")) {
+                if(decimalCounter > 1) {
+                    editedSequence.deleteCharAt(index);
+                } else {
+                    decimalCounter += 1;
+                }
+            }
+
+
+
+        }
+
 
         return sequence;
     }
